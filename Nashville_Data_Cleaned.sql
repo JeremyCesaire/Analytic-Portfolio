@@ -1,4 +1,5 @@
 --Standardize Date Format
+
 SELECT*
 FROM PortfolioProject.dbo.NashvilleHousing
 
@@ -13,7 +14,6 @@ ADD SaleDateConverted Date;
 
 UPDATE NashvilleHousing
 SET SaleDateConverted = CONVERT(Date,SaleDate)
-
 
 -- Populate Property Address data
 
@@ -37,7 +37,6 @@ JOIN PortfolioProject.dbo.NashvilleHousing b
 on a.ParcelID = b.ParcelID
 AND a.[UniqueID] <> b.[UniqueID]
 Where a.PropertyAddress is null
-
 
 --Breaking out Address into Individual Columns (Address, City, State)
 
@@ -104,7 +103,6 @@ SELECT*
 FROM PortfolioProject.dbo.NashvilleHousing
 
 
-
 --Change Y and N to Yes and No in "Sold as Vacant" field
 
 SELECT DISTINCT(SoldAsVacant), COUNT(SoldAsVacant)
@@ -125,7 +123,6 @@ SET SoldAsVacant = CASE WHEN SoldAsVacant = 'Y' THEN 'YES'
       WHEN SoldAsVacant = 'N' THEN 'NO'
 	  ELSE SoldAsVacant
 	  END
-
 
 --Remove Duplicates
 
